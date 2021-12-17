@@ -46,7 +46,9 @@ async function getCredentials(accessToken) {
 }
 
 async function verifyCredential(credential) {
-    const data = JSON.stringify(credential)
+    const data = JSON.stringify({
+        verifiableCredentials: [credential]
+    })
     var config = {
         method: 'post',
         url: verifierBaseUrl + '/verifier/verify-vcs',
