@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
+var cors = require('cors')
 const { firebaseApp, db } = require('./src/utils/firebase')
 const { getFirestore, collection, getDocs } = require('firebase/firestore');
 const { cloudWalletApi, verifierApi, login, getCredentials, verifyCredential } = require('./src/utils/affinidi')
@@ -11,6 +12,7 @@ const { cloudWalletApi, verifierApi, login, getCredentials, verifyCredential } =
 const app = express()
 
 app.use(bodyParser.json())
+app.use(cors())
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.send(200, "express");
